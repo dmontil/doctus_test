@@ -42,30 +42,30 @@ void main() {
 
 bool validatePassword(String password) {
   int skipSteps = 0;
-  Map<String, String> validCharacters = {
+  Map<String, String> matchingBrackets = {
     '{': '}',
     '[': ']',
     '(': ')',
     ' ': ' '
   };
-  RegExp regex = RegExp(r'^[{}\[\]\(\)\s]*$');
+  RegExp validPattern = RegExp(r'^[{}\[\]\(\)\s]*$');
 
   if (password.isEmpty) return false;
   if (password.length % 2 != 0) return false;
-  if (!regex.hasMatch(password)) return false;
+  if (!validPattern.hasMatch(password)) return false;
 
     final cheecksNeeded = password.length / 2;
     for (var i = 0; i < cheecksNeeded; i++) {
       i = i + skipSteps;
-      String firtsValue = password[i];
-      String secondValue = password[i + 1];
-      String opossiteValue = password[password.length - (1 + i)];
+      String currentChar = password[i];
+      String nextChar = password[i + 1];
+      String oppositeChar = password[password.length - (1 + i)];
 
-      if (validCharacters.containsKey(firtsValue) &&
-          validCharacters[firtsValue] == secondValue) {
+      if (matchingBrackets.containsKey(currentChar) &&
+          matchingBrackets[currentChar] == nextChar) {
         skipSteps++;
-      } else if (validCharacters.containsKey(firtsValue) &&
-          validCharacters[firtsValue] != opossiteValue) {
+      } else if (matchingBrackets.containsKey(currentChar) &&
+          matchingBrackets[currentChar] != oppositeChar) {
         return false;
       }
     }
