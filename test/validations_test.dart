@@ -33,6 +33,7 @@ void main() {
 
 bool validatePassword(String password) {
   final List<bool> checks = [];
+   int skipSteps = 0;
   if (password.isEmpty) return false;
 
   Map<String, String> validCharacters = {'{': '}', '[': ']', '(': ')', '': ''};
@@ -43,10 +44,15 @@ bool validatePassword(String password) {
     if (charList.length % 2 != 0) return false;
     final cheecksNeeded = charList.length / 2;
     for (var i = 0; i < cheecksNeeded; i++) {
+      i = i +skipSteps;
       String firtsValue = charList[i];
+      String secondValue = charList[i +1];
       String opossiteValue = charList[charList.length - (1+ i)];
-      if (validCharacters.containsKey(firtsValue) &&
-          validCharacters[firtsValue] == opossiteValue) {
+      if (validCharacters.containsKey(firtsValue) && validCharacters[firtsValue]  == secondValue){
+        checks.add(true);
+        skipSteps ++;
+      }else  if (validCharacters.containsKey(firtsValue) &&
+          validCharacters[firtsValue] == opossiteValue ) {
         checks.add(true);
       } else {
         return false;
