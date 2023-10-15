@@ -25,8 +25,17 @@ void main() {
     test('Value : {([])}, return true', () {
       expect(validatePassword('{([])}'), true);
     });
+    test('Value : {(b[])}b, return false', () {
+      expect(validatePassword('{(b[])}b'), false);
+    });
     test('Value : ((((((((), return false', () {
       expect(validatePassword('(((((((()'), false);
+    });
+    test('Value : ((a((((((), return false', () {
+      expect(validatePassword('(a(((((()'), false);
+    });
+    test('Value : { ([]) }, return true', () {
+      expect(validatePassword('{ ([]) }'), true);
     });
   });
 }
@@ -36,8 +45,8 @@ bool validatePassword(String password) {
    int skipSteps = 0;
   if (password.isEmpty) return false;
 
-  Map<String, String> validCharacters = {'{': '}', '[': ']', '(': ')', '': ''};
-  RegExp regex = RegExp(r'^[{}()\[\]]*$');
+  Map<String, String> validCharacters = {'{': '}', '[': ']', '(': ')',   ' ': ' '};
+  RegExp regex = RegExp(r'^[{}\[\]\(\)\s]*$');
 
   if (regex.hasMatch(password)) {
     List<String> charList = password.split('');
