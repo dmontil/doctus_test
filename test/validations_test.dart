@@ -41,7 +41,6 @@ void main() {
 }
 
 bool validatePassword(String password) {
-  final List<bool> checks = [];
    int skipSteps = 0;
   if (password.isEmpty) return false;
 
@@ -58,16 +57,14 @@ bool validatePassword(String password) {
       String secondValue = charList[i +1];
       String opossiteValue = charList[charList.length - (1+ i)];
       if (validCharacters.containsKey(firtsValue) && validCharacters[firtsValue]  == secondValue){
-        checks.add(true);
+        //checks.add(true);
         skipSteps ++;
       }else  if (validCharacters.containsKey(firtsValue) &&
-          validCharacters[firtsValue] == opossiteValue ) {
-        checks.add(true);
-      } else {
-        return false;
+          validCharacters[firtsValue] != opossiteValue ) {
+       return false;
       }
     }
-    return checks.every((e) => e == true);
+    return true;
   }
   return false;
 }
