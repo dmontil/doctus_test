@@ -41,7 +41,6 @@ void main() {
 }
 
 bool validatePassword(String password) {
-  if (password.isEmpty) return false;
   int skipSteps = 0;
   Map<String, String> validCharacters = {
     '{': '}',
@@ -51,14 +50,17 @@ bool validatePassword(String password) {
   };
   RegExp regex = RegExp(r'^[{}\[\]\(\)\s]*$');
 
-  if (regex.hasMatch(password)) {
-    if (password.length % 2 != 0) return false;
+  if (password.isEmpty) return false;
+  if (password.length % 2 != 0) return false;
+  if (!regex.hasMatch(password)) return false;
+
     final cheecksNeeded = password.length / 2;
     for (var i = 0; i < cheecksNeeded; i++) {
       i = i + skipSteps;
       String firtsValue = password[i];
       String secondValue = password[i + 1];
       String opossiteValue = password[password.length - (1 + i)];
+
       if (validCharacters.containsKey(firtsValue) &&
           validCharacters[firtsValue] == secondValue) {
         skipSteps++;
@@ -68,6 +70,5 @@ bool validatePassword(String password) {
       }
     }
     return true;
-  }
-  return false;
+
 }
