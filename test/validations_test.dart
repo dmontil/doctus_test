@@ -41,27 +41,30 @@ void main() {
 }
 
 bool validatePassword(String password) {
-   int skipSteps = 0;
   if (password.isEmpty) return false;
-
-  Map<String, String> validCharacters = {'{': '}', '[': ']', '(': ')',   ' ': ' '};
+  int skipSteps = 0;
+  Map<String, String> validCharacters = {
+    '{': '}',
+    '[': ']',
+    '(': ')',
+    ' ': ' '
+  };
   RegExp regex = RegExp(r'^[{}\[\]\(\)\s]*$');
 
   if (regex.hasMatch(password)) {
-    List<String> charList = password.split('');
-    if (charList.length % 2 != 0) return false;
-    final cheecksNeeded = charList.length / 2;
+    if (password.length % 2 != 0) return false;
+    final cheecksNeeded = password.length / 2;
     for (var i = 0; i < cheecksNeeded; i++) {
-      i = i +skipSteps;
-      String firtsValue = charList[i];
-      String secondValue = charList[i +1];
-      String opossiteValue = charList[charList.length - (1+ i)];
-      if (validCharacters.containsKey(firtsValue) && validCharacters[firtsValue]  == secondValue){
-        //checks.add(true);
-        skipSteps ++;
-      }else  if (validCharacters.containsKey(firtsValue) &&
-          validCharacters[firtsValue] != opossiteValue ) {
-       return false;
+      i = i + skipSteps;
+      String firtsValue = password[i];
+      String secondValue = password[i + 1];
+      String opossiteValue = password[password.length - (1 + i)];
+      if (validCharacters.containsKey(firtsValue) &&
+          validCharacters[firtsValue] == secondValue) {
+        skipSteps++;
+      } else if (validCharacters.containsKey(firtsValue) &&
+          validCharacters[firtsValue] != opossiteValue) {
+        return false;
       }
     }
     return true;
