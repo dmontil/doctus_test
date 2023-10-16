@@ -9,10 +9,6 @@ import 'go_router_refresh_stream.dart';
 
 enum AppRoutes {
   signIn,
-  profile,
-  recoverPassword,
-  signUp,
-  onboarding,
   home,
   startApp
 }
