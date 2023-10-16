@@ -1,5 +1,5 @@
-import 'package:doctus_test/features/cats/data/dtos/cat_dto.dart';
+import 'package:doctus_test/features/cats/domain/models/cat.dart';
 
 abstract class CatsRepository{
-  Future<CatDTO> getCat();
+  Future<Cat> getCat();
 }

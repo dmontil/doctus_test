@@ -1,4 +1,4 @@
-import 'package:doctus_test/features/cats/app/ui/screen/home_screen.dart';
+import 'package:doctus_test/features/cats/app/ui/screen/cats_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:doctus_test/features/auth/index.dart';
 import 'package:doctus_test/features/start_app/app/cubit/start_app_cubit.dart';
