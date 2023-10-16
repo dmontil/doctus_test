@@ -6,9 +6,9 @@ import 'dart:io' show Platform;
 
 import 'package:url_launcher/url_launcher.dart';
 
-final String linkPlayStore =
-    'https://play.google.com/store/apps/details?id=health.dana.app';
-final String linkAppStore = 'https://apps.apple.com/es/app/dana/id1559706974';
+const String linkPlayStore =
+    'https://https://www.google.com/';
+const String linkAppStore = 'https://apple.com';
 
 class NeedUpdateDialog extends StatelessWidget {
   const NeedUpdateDialog({Key? key}) : super(key: key);

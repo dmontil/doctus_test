@@ -5,6 +5,7 @@ import 'package:doctus_test/core/utils/storage/persistant_storage.dart';
 import 'package:doctus_test/core/validations/password.dart';
 import 'package:doctus_test/features/auth/domain/constants/auth_constants.dart';
 import 'package:doctus_test/features/auth/index.dart';
+import 'package:doctus_test/features/start_app/app/cubit/start_app_cubit.dart';
 import 'package:formz/formz.dart';
 
 class SignInCubit extends Cubit<SignInState> {
@@ -44,6 +45,7 @@ class SignInCubit extends Cubit<SignInState> {
   Future<void> _logUserInApp(AuthDTO signInDTO) async {
     locator<PersistentStorage>()
         .write(key: AuthConstants.token, value: signInDTO.token);
+    locator<StartAppCubit>().init();
   }
 
   void _checkError(e) {

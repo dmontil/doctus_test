@@ -52,7 +52,7 @@ class _PasswordInput extends StatelessWidget {
             labelText: 'Password',
           ).copyWith(
             errorText:
-                state.password.isNotValid ? 'Valid password only use {},[],(), and empty space' : null,
+                state.password.isNotValid &&  state.password.value.isNotEmpty ? 'Valid password only use {},[],(), and empty space' : null,
           ),
         );
       },

@@ -18,9 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$StartAppState {
   bool get isLogged => throw _privateConstructorUsedError;
   bool get error => throw _privateConstructorUsedError;
-  bool get showOnboarding => throw _privateConstructorUsedError;
   AppVersionConfig? get appVersionConfig => throw _privateConstructorUsedError;
-  bool get waitOneSecond => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $StartAppStateCopyWith<StartAppState> get copyWith =>
@@ -33,12 +31,7 @@ abstract class $StartAppStateCopyWith<$Res> {
           StartAppState value, $Res Function(StartAppState) then) =
       _$StartAppStateCopyWithImpl<$Res, StartAppState>;
   @useResult
-  $Res call(
-      {bool isLogged,
-      bool error,
-      bool showOnboarding,
-      AppVersionConfig? appVersionConfig,
-      bool waitOneSecond});
+  $Res call({bool isLogged, bool error, AppVersionConfig? appVersionConfig});
 
   $AppVersionConfigCopyWith<$Res>? get appVersionConfig;
 }
@@ -58,9 +51,7 @@ class _$StartAppStateCopyWithImpl<$Res, $Val extends StartAppState>
   $Res call({
     Object? isLogged = null,
     Object? error = null,
-    Object? showOnboarding = null,
     Object? appVersionConfig = freezed,
-    Object? waitOneSecond = null,
   }) {
     return _then(_value.copyWith(
       isLogged: null == isLogged
@@ -71,18 +62,10 @@ class _$StartAppStateCopyWithImpl<$Res, $Val extends StartAppState>
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as bool,
-      showOnboarding: null == showOnboarding
-          ? _value.showOnboarding
-          : showOnboarding // ignore: cast_nullable_to_non_nullable
-              as bool,
       appVersionConfig: freezed == appVersionConfig
           ? _value.appVersionConfig
           : appVersionConfig // ignore: cast_nullable_to_non_nullable
               as AppVersionConfig?,
-      waitOneSecond: null == waitOneSecond
-          ? _value.waitOneSecond
-          : waitOneSecond // ignore: cast_nullable_to_non_nullable
-              as bool,
     ) as $Val);
   }
 
@@ -107,12 +90,7 @@ abstract class _$$StartAppStateImplCopyWith<$Res>
       __$$StartAppStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {bool isLogged,
-      bool error,
-      bool showOnboarding,
-      AppVersionConfig? appVersionConfig,
-      bool waitOneSecond});
+  $Res call({bool isLogged, bool error, AppVersionConfig? appVersionConfig});
 
   @override
   $AppVersionConfigCopyWith<$Res>? get appVersionConfig;
@@ -131,9 +109,7 @@ class __$$StartAppStateImplCopyWithImpl<$Res>
   $Res call({
     Object? isLogged = null,
     Object? error = null,
-    Object? showOnboarding = null,
     Object? appVersionConfig = freezed,
-    Object? waitOneSecond = null,
   }) {
     return _then(_$StartAppStateImpl(
       isLogged: null == isLogged
@@ -144,18 +120,10 @@ class __$$StartAppStateImplCopyWithImpl<$Res>
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as bool,
-      showOnboarding: null == showOnboarding
-          ? _value.showOnboarding
-          : showOnboarding // ignore: cast_nullable_to_non_nullable
-              as bool,
       appVersionConfig: freezed == appVersionConfig
           ? _value.appVersionConfig
           : appVersionConfig // ignore: cast_nullable_to_non_nullable
               as AppVersionConfig?,
-      waitOneSecond: null == waitOneSecond
-          ? _value.waitOneSecond
-          : waitOneSecond // ignore: cast_nullable_to_non_nullable
-              as bool,
     ));
   }
 }
@@ -164,11 +132,7 @@ class __$$StartAppStateImplCopyWithImpl<$Res>
 
 class _$StartAppStateImpl implements _StartAppState {
   const _$StartAppStateImpl(
-      {this.isLogged = false,
-      this.error = false,
-      this.showOnboarding = false,
-      this.appVersionConfig,
-      this.waitOneSecond = false});
+      {this.isLogged = false, this.error = false, this.appVersionConfig});
 
   @override
   @JsonKey()
@@ -177,17 +141,11 @@ class _$StartAppStateImpl implements _StartAppState {
   @JsonKey()
   final bool error;
   @override
-  @JsonKey()
-  final bool showOnboarding;
-  @override
   final AppVersionConfig? appVersionConfig;
-  @override
-  @JsonKey()
-  final bool waitOneSecond;
 
   @override
   String toString() {
-    return 'StartAppState(isLogged: $isLogged, error: $error, showOnboarding: $showOnboarding, appVersionConfig: $appVersionConfig, waitOneSecond: $waitOneSecond)';
+    return 'StartAppState(isLogged: $isLogged, error: $error, appVersionConfig: $appVersionConfig)';
   }
 
   @override
@@ -198,17 +156,13 @@ class _$StartAppStateImpl implements _StartAppState {
             (identical(other.isLogged, isLogged) ||
                 other.isLogged == isLogged) &&
             (identical(other.error, error) || other.error == error) &&
-            (identical(other.showOnboarding, showOnboarding) ||
-                other.showOnboarding == showOnboarding) &&
             (identical(other.appVersionConfig, appVersionConfig) ||
-                other.appVersionConfig == appVersionConfig) &&
-            (identical(other.waitOneSecond, waitOneSecond) ||
-                other.waitOneSecond == waitOneSecond));
+                other.appVersionConfig == appVersionConfig));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLogged, error, showOnboarding,
-      appVersionConfig, waitOneSecond);
+  int get hashCode =>
+      Object.hash(runtimeType, isLogged, error, appVersionConfig);
 
   @JsonKey(ignore: true)
   @override
@@ -221,20 +175,14 @@ abstract class _StartAppState implements StartAppState {
   const factory _StartAppState(
       {final bool isLogged,
       final bool error,
-      final bool showOnboarding,
-      final AppVersionConfig? appVersionConfig,
-      final bool waitOneSecond}) = _$StartAppStateImpl;
+      final AppVersionConfig? appVersionConfig}) = _$StartAppStateImpl;
 
   @override
   bool get isLogged;
   @override
   bool get error;
   @override
-  bool get showOnboarding;
-  @override
   AppVersionConfig? get appVersionConfig;
-  @override
-  bool get waitOneSecond;
   @override
   @JsonKey(ignore: true)
   _$$StartAppStateImplCopyWith<_$StartAppStateImpl> get copyWith =>

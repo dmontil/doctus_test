@@ -1,3 +1,4 @@
+import 'package:doctus_test/core/di/locator.dart';
 import 'package:doctus_test/features/cats/app/ui/screen/cats_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:doctus_test/features/auth/index.dart';
@@ -15,37 +16,36 @@ enum AppRoutes {
   home,
   startApp
 }
-//final useBloc = locator<StartAppCubit>();
+
+final useBloc = locator<StartAppCubit>();
 final goRouter = GoRouter(
- // refreshListenable: GoRouterRefreshStream(useBloc.stream),
+  refreshListenable: GoRouterRefreshStream(useBloc.stream),
   initialLocation: '/',
   debugLogDiagnostics: true,
-     redirect: (context, state) {
-    //   final isLogged = useBloc.state.isLogged;
-    //   if (isLogged) {
-    //     if (state.location == '/') {
-    //       return '/home';
-    //     }
-    //   } else {
-    //     if (state.location.startsWith('/home')) {
-    //       return '/sign-in';
-    //     }
-    //   }
-    //   return null;
-    },
+  redirect: (context, state) {
+      final isLogged = useBloc.state.isLogged;
+      if (isLogged) {
+        if (state.location == '/') {
+          return '/home';
+        }
+      } else {
+        if (state.location.startsWith('/home')) {
+          return '/sign-in';
+        }
+      }
+      return null;
+  },
   routes: [
     GoRoute(
         path: '/',
         name: AppRoutes.startApp.name,
-        builder: (context, state) =>  const CatScreen(),
+        builder: (context, state) => const StartAppPage(),
         routes: [
           GoRoute(
             path: 'sign-in',
             name: AppRoutes.signIn.name,
             builder: (context, state) => const SignInPage(),
           ),
-  
-
         ]),
     GoRoute(
       path: '/home',

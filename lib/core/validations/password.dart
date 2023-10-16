@@ -17,7 +17,7 @@ class PasswordInput extends FormzInput<String, PasswordValidationError> {
   PasswordValidationError? validator(String value) {
     if (value.isEmpty) {
       return PasswordValidationError.empty;
-    } else if (!RegexPattern.passwordBrackets.hasMatch(value)) {
+    } else if (!validatePassword(value)) {
       return PasswordValidationError.invalid;
     }
 
@@ -34,4 +34,35 @@ extension on PasswordValidationError {
         return 'Please enter an email';
     }
   }
+}
+
+bool validatePassword(String password) {
+  int skipSteps = 0;
+  Map<String, String> matchingBrackets = {
+    '{': '}',
+    '[': ']',
+    '(': ')',
+    ' ': ' '
+  };
+
+  if (password.isEmpty) return false;
+  if (password.length % 2 != 0) return false;
+  if (!RegexPattern.passwordBrackets.hasMatch(password)) return false;
+
+  final checksNeeded = password.length / 2;
+  for (var i = 0; i < checksNeeded; i++) {
+    i = i + skipSteps;
+    String currentChar = password[i];
+    String nextChar = password[i + 1];
+    String oppositeChar = password[password.length - (1 + i)];
+
+    if (matchingBrackets.containsKey(currentChar) &&
+        matchingBrackets[currentChar] == nextChar) {
+      skipSteps++;
+    } else if (matchingBrackets.containsKey(currentChar) &&
+        matchingBrackets[currentChar] != oppositeChar) {
+      return false;
+    }
+  }
+  return true;
 }

@@ -1,3 +1,4 @@
+import 'package:doctus_test/core/validations/password.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -40,35 +41,3 @@ void main() {
   });
 }
 
-bool validatePassword(String password) {
-  int skipSteps = 0;
-  Map<String, String> matchingBrackets = {
-    '{': '}',
-    '[': ']',
-    '(': ')',
-    ' ': ' '
-  };
-  RegExp validPattern = RegExp(r'^[{}\[\]\(\)\s]*$');
-
-  if (password.isEmpty) return false;
-  if (password.length % 2 != 0) return false;
-  if (!validPattern.hasMatch(password)) return false;
-
-    final cheecksNeeded = password.length / 2;
-    for (var i = 0; i < cheecksNeeded; i++) {
-      i = i + skipSteps;
-      String currentChar = password[i];
-      String nextChar = password[i + 1];
-      String oppositeChar = password[password.length - (1 + i)];
-
-      if (matchingBrackets.containsKey(currentChar) &&
-          matchingBrackets[currentChar] == nextChar) {
-        skipSteps++;
-      } else if (matchingBrackets.containsKey(currentChar) &&
-          matchingBrackets[currentChar] != oppositeChar) {
-        return false;
-      }
-    }
-    return true;
-
-}

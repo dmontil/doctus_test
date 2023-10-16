@@ -18,11 +18,10 @@ class StartAppPage extends StatelessWidget {
       listener: (context, state) {
         if (state.appVersionConfig != null &&
             state.appVersionConfig!.needShowUpdate) {
-          //DanaAnalyticsService.trackForceUpdateShown();
           return ShowModal.showBottomSheet(
               isDismissible: false,
               context: context,
-              widget: Material(child: NeedUpdateDialog()));
+              widget: const Material(child: NeedUpdateDialog()));
         }
         if (state.error) {
           return context.goNamed(AppRoutes.signIn.name);
@@ -30,16 +29,12 @@ class StartAppPage extends StatelessWidget {
         if (state.isLogged != true) {
           return context.goNamed(AppRoutes.signIn.name);
         }
-        if (state.showOnboarding == true) {
-          return context.goNamed(AppRoutes.onboarding.name);
-        }
-
         return context.goNamed(AppRoutes.home.name);
       },
       builder: (context, state) {
         return Scaffold(
           body: Container(
-            child:  Center(
+            child:  const Center(
               child: Text('Loading...'),
             )
           

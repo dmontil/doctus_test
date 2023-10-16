@@ -51,7 +51,7 @@ class _Title extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      'Your cat',
+      'Tu gato',
       style: AppTextStyle.h1,
     );
   }

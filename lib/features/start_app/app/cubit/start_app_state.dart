@@ -8,9 +8,8 @@ class StartAppState with _$StartAppState {
   const factory StartAppState({
     @Default(false) bool isLogged,
     @Default(false) bool error,
-    @Default(false) bool showOnboarding,
     AppVersionConfig? appVersionConfig,
-    @Default(false) bool waitOneSecond,
+
 
   }) = _StartAppState;
 }

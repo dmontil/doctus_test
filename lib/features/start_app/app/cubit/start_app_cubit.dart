@@ -11,17 +11,13 @@ import 'package:version/version.dart';
 
 class StartAppCubit extends Cubit<StartAppState> {
   StartAppCubit({
-    required StartAppRepository startAppRepository,
     required AppRemoteConfig remoteConfig,
     required AppDeviceInfo deviceInfo,
   })  : _remoteConfig = remoteConfig,
-        _startAppRepository = startAppRepository,
         _deviceInfo = deviceInfo,
         super(StartAppState());
   final AppRemoteConfig _remoteConfig;
   final AppDeviceInfo _deviceInfo;
-
-  final StartAppRepository _startAppRepository;
 
   Future<void> init() async {
     AppVersionConfig appVersionConfig = await checkVersion();
@@ -35,15 +31,12 @@ class StartAppCubit extends Cubit<StartAppState> {
     final token =
         await locator<PersistentStorage>().read(key: AuthConstants.token);
     if (token != null) {
-      // DanaAnalyticsService.updateUserInfo('${user.email}');
-      //  PushNotificationService.updateUserId('${user.uid}');
       await registerCubits();
     }
 
     emit(StartAppState(
       isLogged: token != null,
       appVersionConfig: appVersionConfig,
-      showOnboarding: false,
     ));
   }
 
@@ -53,7 +46,7 @@ class StartAppCubit extends Cubit<StartAppState> {
       final remoteVersion = await _remoteConfig.getVersions();
       final String currentBuild = _deviceInfo.getCurrentVersion;
 
-      final minVersionStr = remoteVersion['minVersion'].toString();
+      final minVersionStr = remoteVersion.toString();
 
       Version currentVersion = Version.parse(currentBuild);
       Version minVersion = Version.parse(minVersionStr);
@@ -65,6 +58,7 @@ class StartAppCubit extends Cubit<StartAppState> {
       );
     } catch (e) {
       return const AppVersionConfig(
+
           isLatestVersion: false,
           isVersionNotAllowed: false,
           needShowUpdate: false);
@@ -72,9 +66,3 @@ class StartAppCubit extends Cubit<StartAppState> {
   }
 }
 
-bool isNullOrEmpty(String? value) {
-  if (value == null || value.isEmpty) {
-    return true;
-  }
-  return false;
-}
