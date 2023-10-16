@@ -13,7 +13,7 @@ class CatsCubit extends Cubit<CatsState> {
         super(
           const CatsState(status: Status.initial, cats: []),
         );
-
+//TODO: Add get Cats for create list.
   Future<void> getCat() async {
     emit(state.copyWith(status: Status.loading));
     try {

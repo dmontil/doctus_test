@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:doctus_test/core/di/locator.dart';
 import 'package:doctus_test/core/utils/enums/status.dart';
 import 'package:doctus_test/features/cats/app/cubit/cats_cubit.dart';
@@ -25,7 +26,7 @@ class CatsList extends StatelessWidget {
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: state.cats.length,
                   itemBuilder: (context, index) {
-                    return Image.network(state.cats[index].image);
+                    return CachedNetworkImage(imageUrl: state.cats[index].image);
                   });
             }
             return const SizedBox.shrink();
