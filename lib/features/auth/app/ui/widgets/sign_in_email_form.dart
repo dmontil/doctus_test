@@ -1,3 +1,4 @@
+import 'package:doctus_test/core/ui/styles/app_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
@@ -13,18 +14,22 @@ class SignInEmailForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text(
-            'Iniciar sesión',
-          ),
-          gapH16,
-          _PasswordInput(),
-          gapH8,
-          _LoginButton(),
-          gapH12,
-        ],
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+             Text(
+              'Iniciar sesión',
+              style: AppTextStyle.h1,
+            ),
+            gapH16,
+            _PasswordInput(),
+            gapH16,
+            _LoginButton(),
+            gapH16,
+          ],
+        ),
       ),
     );
   }
@@ -47,7 +52,7 @@ class _PasswordInput extends StatelessWidget {
             labelText: 'Password',
           ).copyWith(
             errorText:
-                state.password.isNotValid ? 'Please enter a valid password' : null,
+                state.password.isNotValid ? 'Valid password only use {},[],(), and empty space' : null,
           ),
         );
       },
@@ -60,17 +65,15 @@ class _LoginButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SignInCubit, SignInState>(
       bloc: locator<SignInCubit>(),
-      buildWhen: (previous, current) => previous.status != current.status,
       builder: (context, state) {
         return state.status.isInProgress
             ? const CircularProgressIndicator()
             : SizedBox(
                 width: double.infinity,
-                child: CtaButton(
-                  onPressed: state.password.isValid
+                child: CtaButton(onPressed: state.password.isValid
                       ? () => locator<SignInCubit>().sigInWithCredentials()
                       : null,
-                  text: 'Login button',
+                  text: 'Iniciar sessión',
                   color: Colors.orange,
                 ),
               );
