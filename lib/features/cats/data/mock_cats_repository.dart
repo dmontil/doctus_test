@@ -4,6 +4,7 @@ import 'package:doctus_test/features/cats/domain/repositories/cats_repository.da
 class MockCatsRepository implements CatsRepository{
   @override
   Future<Cat> getCat() async {
+    await Future.delayed(const Duration(seconds: 2));
     return  const Cat(
       image: 'https://www.kevinwanke.com/wp-content/uploads/2021/06/marcel-friedrich-XC_28Kk25F0-unsplash.jpg',
       id: '1',

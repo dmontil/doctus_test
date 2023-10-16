@@ -11,7 +11,7 @@ class CatsCubit extends Cubit<CatsState> {
     required CatsRepository catsRepository,
   })  : _catsRepository = catsRepository,
         super(
-          const CatsState(status: Status.loading, cats: []),
+          const CatsState(status: Status.initial, cats: []),
         );
 
   Future<void> getCat() async {
