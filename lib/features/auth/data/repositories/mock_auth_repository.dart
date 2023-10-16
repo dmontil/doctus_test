@@ -5,6 +5,7 @@ class MockAuthRepository extends AuthRepository{
   @override
   Future<AuthDTO> signInWithPassword({required String password})async  {
     await Future.delayed(const Duration(seconds: 1));
+
    return AuthDTO(token: 'token');
   }
   
