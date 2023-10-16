@@ -39,7 +39,7 @@ final goRouter = GoRouter(
     GoRoute(
         path: '/',
         name: AppRoutes.startApp.name,
-        builder: (context, state) =>  const SignInPage(),
+        builder: (context, state) =>  const HomeScreen(),
         routes: [
           GoRoute(
             path: 'sign-in',

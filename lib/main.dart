@@ -1,4 +1,5 @@
 import 'package:doctus_test/core/di/locator.dart';
+import 'package:doctus_test/core/http/endpoints.dart';
 import 'package:doctus_test/core/routing/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -6,7 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final sharedPreferences = await SharedPreferences.getInstance();
-  await setupLocator(sharedPreferences);
+  await setupLocator(sharedPreferences, Endpoints.baseURl);
   runApp(const MyApp());
 }
 
