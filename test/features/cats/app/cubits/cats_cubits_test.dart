@@ -1,9 +1,7 @@
-import 'package:doctus_test/features/cats/app/cubit/cats_state.dart';
 import 'package:doctus_test/features/cats/app/cubit/cats_cubit.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:doctus_test/features/cats/domain/repositories/cats_repository.dart';
-import 'package:doctus_test/core/utils/enums/status.dart';
 import 'package:mockito/annotations.dart';
 
 import '../../domain/fakes/cat_model_fake.dart';

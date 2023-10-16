@@ -32,16 +32,20 @@ class CatScreen extends StatelessWidget {
             padding: EdgeInsets.all(8.0),
             child: SizedBox(
               width: double.infinity,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
 
-                children: [
-                  _Title(),
-                  gapH12,
-                  CatsList(),
-                  gapH12,
-                  CatButton(),
-                ],
+                  children: [
+                    _Title(),
+                    gapH12,
+                    CatsList(),
+                    gapH12,
+                    CatButton(),
+                    gapH12,
+
+                  ],
+                ),
               ),
             ),
           ),

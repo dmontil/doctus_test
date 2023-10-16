@@ -18,7 +18,7 @@ class CatsCubit extends Cubit<CatsState> {
     emit(state.copyWith(status: Status.loading));
     try {
       final Cat cat = await _catsRepository.getCat();
-      emit(state.copyWith(cats: [cat], status: Status.success));
+      emit(state.copyWith(cats: [...state.cats , cat], status: Status.success));
     } catch (e) {
       emit(state.copyWith(status: Status.error));
     }
