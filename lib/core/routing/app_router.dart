@@ -1,7 +1,5 @@
-import 'package:doctus_test/features/home/app/ui/screen/home_screen.dart';
-import 'package:flutter/material.dart';
+import 'package:doctus_test/features/cats/app/ui/screen/home_screen.dart';
 import 'package:go_router/go_router.dart';
-import 'package:doctus_test/core/di/locator.dart';
 import 'package:doctus_test/features/auth/index.dart';
 import 'package:doctus_test/features/start_app/app/cubit/start_app_cubit.dart';
 import 'package:doctus_test/features/start_app/app/ui/start_app_page.dart';
@@ -39,7 +37,7 @@ final goRouter = GoRouter(
     GoRoute(
         path: '/',
         name: AppRoutes.startApp.name,
-        builder: (context, state) =>  const HomeScreen(),
+        builder: (context, state) =>  const CatScreen(),
         routes: [
           GoRoute(
             path: 'sign-in',
@@ -52,7 +50,7 @@ final goRouter = GoRouter(
     GoRoute(
       path: '/home',
       name: AppRoutes.home.name,
-      builder: (context, state) => const HomeScreen(),
+      builder: (context, state) => const CatScreen(),
     ),
   ],
 );
