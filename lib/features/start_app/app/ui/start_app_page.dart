@@ -29,7 +29,7 @@ class StartAppPage extends StatelessWidget {
         if (state.isLogged != true) {
           return context.goNamed(AppRoutes.signIn.name);
         }
-        return context.goNamed(AppRoutes.signIn.name);
+        return context.goNamed(AppRoutes.home.name);
       },
       builder: (context, state) {
         return Scaffold(
