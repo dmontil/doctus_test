@@ -6,7 +6,7 @@ import 'package:doctus_test/features/cats/domain/repositories/cats_repository.da
 import 'package:doctus_test/core/utils/enums/status.dart';
 import 'package:mockito/annotations.dart';
 
-import '../../domain/models/fakes/cat_model_fake.dart';
+import '../../domain/fakes/cat_model_fake.dart';
 import '../fakes/cats_state_fake.dart';
 import 'cats_cubits_test.mocks.dart';
 @GenerateMocks([CatsRepository])

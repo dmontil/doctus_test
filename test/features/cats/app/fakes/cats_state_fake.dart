@@ -1,6 +1,7 @@
 import 'package:doctus_test/core/utils/enums/status.dart';
 import 'package:doctus_test/features/cats/app/cubit/cats_state.dart';
-import '../../domain/models/fakes/cat_model_fake.dart';
+
+import '../../domain/fakes/cat_model_fake.dart';
 
 
 const CatsState tInitialState = CatsState(
