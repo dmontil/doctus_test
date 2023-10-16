@@ -26,10 +26,10 @@ class CatsList extends StatelessWidget {
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: state.cats.length,
                   itemBuilder: (context, index) {
-                    return CachedNetworkImage(imageUrl: state.cats[index].image);
+                    return CachedNetworkImage(imageUrl: state.cats[index].image,placeholder: (context,value ) => const LoadingPlaceHolder(),);
                   });
             }
-            return const SizedBox.shrink();
+            return const Text("Aun no has buscado a tu gato");
           }),
     );
   }

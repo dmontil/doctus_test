@@ -24,21 +24,25 @@ class CatScreen extends StatelessWidget {
           listener: (context, state) {
             if (state.status.isError) {
               context.showErrorSnackBar(
-                message: 'Error al obtener el gato',
+                message: 'Error al buscar el gato',
               );
             }
           },
           child: const Padding(
             padding: EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                _Title(),
-                gapH12,
-                CatsList(),
-                gapH12,
-                CatButton(),
-              ],
+            child: SizedBox(
+              width: double.infinity,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+
+                children: [
+                  _Title(),
+                  gapH12,
+                  CatsList(),
+                  gapH12,
+                  CatButton(),
+                ],
+              ),
             ),
           ),
         ));
