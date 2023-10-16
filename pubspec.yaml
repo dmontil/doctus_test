@@ -41,6 +41,7 @@ dependencies:
   package_info_plus: ^3.1.2
   shared_preferences: ^2.2.2
   version: ^3.0.0
+  shimmer: ^3.0.0
 
 
 
