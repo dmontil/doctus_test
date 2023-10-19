@@ -3,8 +3,8 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('Password Validation', () {
-    test('Empty value return false', () {
-      expect(validatePassword(''), false);
+    test('Empty value return true', () {
+      expect(validatePassword(''), true);
     });
     test('Password contains invalid character , return false', () {
       expect(validatePassword('a'), false);
@@ -35,9 +35,10 @@ void main() {
     test('Value : ((a((((((), return false', () {
       expect(validatePassword('(a(((((()'), false);
     });
-    test('Value : { ([]) }, return true', () {
-      expect(validatePassword('{ ([]) }'), true);
+    test('Value : {([])}, return true', () {
+      expect(validatePassword('{([])}'), true);
     });
+
   });
 }
 

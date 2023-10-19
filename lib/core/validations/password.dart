@@ -37,32 +37,45 @@ extension on PasswordValidationError {
 }
 
 bool validatePassword(String password) {
-  int skipSteps = 0;
   Map<String, String> matchingBrackets = {
     '{': '}',
     '[': ']',
     '(': ')',
     ' ': ' '
   };
+  final Set<String> openBrackets = {'{', '[', '(', ' '};
+  final List<String> stack1 = [];
 
-  if (password.isEmpty) return false;
-  if (password.length % 2 != 0) return false;
+  if (password.isEmpty) return true;
   if (!RegexPattern.passwordBrackets.hasMatch(password)) return false;
 
-  final checksNeeded = password.length / 2;
-  for (var i = 0; i < checksNeeded; i++) {
-    i = i + skipSteps;
-    String currentChar = password[i];
-    String nextChar = password[i + 1];
-    String oppositeChar = password[password.length - (1 + i)];
-
-    if (matchingBrackets.containsKey(currentChar) &&
-        matchingBrackets[currentChar] == nextChar) {
-      skipSteps++;
-    } else if (matchingBrackets.containsKey(currentChar) &&
-        matchingBrackets[currentChar] != oppositeChar) {
+  for (var i = 0; i < password.length; i++) {
+    var char = password[i];
+    if (openBrackets.contains(char)) {
+      stack1.add(char);
+    } else if (stack1.isEmpty || matchingBrackets[stack1.removeLast()] != char) {
       return false;
     }
   }
-  return true;
+
+  return stack1.isEmpty;
+
+
+  //My solution
+  // final checksNeeded = password.length / 2;
+  // for (var i = 0; i < checksNeeded; i++) {
+  //   i = i + skipSteps;
+  //   String currentChar = password[i];
+  //   String nextChar = password[i + 1];
+  //   String oppositeChar = password[password.length - (1 + i)];
+  //
+  //   if (matchingBrackets.containsKey(currentChar) &&
+  //       matchingBrackets[currentChar] == nextChar) {
+  //     skipSteps++;
+  //   } else if (matchingBrackets.containsKey(currentChar) &&
+  //       matchingBrackets[currentChar] != oppositeChar) {
+  //     return false;
+  //   }
+  // }
+  // return true;
 }
